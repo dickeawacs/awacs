@@ -1,0 +1,61 @@
+.chefang{
+border: 0px;
+width: 62px;
+height: 70px;
+background-image: url("/ats/pub/images/btn/chefang.gif");
+}
+.bufang{
+border: 0px;
+width: 62px;
+height: 70px;
+background-image: url("/ats/pub/images/btn/bufang.gif");
+}
+/**
+no-repeat 0 0 !important
+*/
+
+/*
+.bufang{
+border: 0px;
+width: 62px;
+height: 70px;
+background-image: url("/ats/pub/images/btn/bufang.gif");
+}**/
+.chuli{
+border: 0px;
+width: 62px;
+height: 70px;
+background-image: url("/ats/pub/images/btn/chuli.gif");
+}
+.helpicon{
+border:0px;
+background-image: url("/ats/pub/images/btn/help.png");
+
+}
+.helpgif{
+border:0px;
+background-image: url("/ats/pub/images/btn/bufang.gif");
+}
+.btnicon{
+width: 16;
+height: 16;
+border: 0px;
+}
+.sound_open{
+	width: 16;
+height: 16;
+border:0px;
+background-image: url("/ats/pub/images/btn/sound_open.gif");
+}
+.sound_mute{
+	width: 16;
+height: 16;
+border:0px;
+background-image: url("/ats/pub/images/btn/sound_mute.gif");
+}
+
+.ats-search
+{ width:16px;
+  height:16px;   
+  background-image: url("/ats/pub/images/btn/search-trigger.gif") !important;
+}

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="ecp" extends="struts-default">
+		<global-results >
+			<result name="treeTest">/pages/test/tree.jsp</result>
+			<result name="map">/pub/map.html</result>
+		</global-results>
+		<action name="login" class="loginAction"  >
+		</action>
+		<action name="query" class="dataAction">
+		
+		</action>
+		<action name="t1Query" class="table1QueryAction"></action>
+		<action name="admin" class="adminAction">
+			<result name="portSeting">/pages/admin/1001.jsp</result>
+			<result name="sysSeting">/pages/admin/1002.jsp</result>
+			<result name="userSeting">/pages/admin/1003.jsp</result>
+			<result name="adminIndex">/pages/admin/index.jsp</result>
+			<result name="outputHelp">/pages/admin/1005.jsp</result>
+		</action>
+		<action name="adminMain" class="adminAction" method="main">
+			<result name="success">/pages/admin/index.jsp</result>
+		</action>
+		<action name="userMain" class="adminAction" method="userMain">
+			<result name="success">/pages/public/user.jsp</result>
+		</action>
+		<action name="sysManagement" class="systemManagementAction">
+			<result name="sysReset">/pages/admin/reset.jsp</result>
+		</action>
+		<action name="atsSettingPage" class="adminAction" method="atssetting">
+			<result name="success">/pages/admin/atssetting.html</result>
+		</action>
+		<action name="admin2" class="adminPortAction"></action>
+		<action name="user" class="userAction"></action>
+		<!-- 负责所有的一层设备二层设备的查询，包括了设备树，下拉控件，设备详情等 -->
+		<action name="editQ" class="DeviceQueryAction"></action>
+		<!-- 普通用户的页面控制 -->
+		<action name="pub" class="publicAction">
+			<result name="stateHelp">/pages/public/1004.jsp</result>
+		</action>
+		<!-- 查询处理结果，主要是需要与设备沟通后返回的结果 -->
+		<action name="result" class="resultAction"></action>
+		<!-- 工具类，开发专用  -->
+		<action name="tool" class="toolAction">
+		<result name="page">/pages/admin/tool.jsp</result>
+		</action>
+		<!-- 导出文件 -->
+		<action name="filedExport" class="dataAction" method="exportExcel">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+	  			<param name="inputName">stream</param>
+	  			<param name="contentDisposition">attachment;filename=${fileName}.xls</param>
+	  			<param name="bufferSize">4096</param>  
+			</result>
+		</action>
+		<!-- 设置管理员密码 -->
+		<action name="adminResetPwd" class="loginAction" method="resetAdminPwd">
+		</action>
+	</package>
+
+	<package name="jsondata" extends="json-default" >
+		<action name="editMap" class="MapAction">
+			<result name="editPage">/pages/admin/editMap.html</result>
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		
+		<action name="viewOnlyMap" class="MapAction"  method="viewOnlyMap">
+			
+			<result name="onlyMap" type="json">
+				<param name="root">defaultMap</param>	
+			</result>
+		</action>
+		<action name="viewCurrentOnlyMap" class="MapAction"  method="viewCurrentOnlyMap">
+			<result name="onlyMap" type="json">
+				<param name="root">defaultMap</param>	
+			</result>
+		</action>
+		
+		 <action name="viewAllMaps" class="MapAction"  method="viewAllMaps">
+			<result name="allMap" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		
+		 <action name="updateShowMap" class="MapAction"  method="updateShowMap">
+			
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		 
+		<action name="delMap" class="MapAction"  method="delMap">
+			
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		<action name="findEquipmentOnly" class="DeviceQueryAction" method="queryEquipmentInfos" >
+			<result name="JSON_EQUIPMENT" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+	</package>
+		<!-- 查询缓存数据 -->
+	<package name="cache" namespace="/cache" extends="json-default" >
+		<action name="outport" class="cacheEquipmentAction" method="findOutPort" >
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		<action name="inport" class="cacheEquipmentAction" method="findInPort" >
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		<action name="treeStore" class="cacheEquipmentAction" method="findEquipmentTree" >
+			<result name="success" type="json">
+				<param name="root">result</param>	
+				<param name="includeProperties">
+				array.*
+				</param>
+				 
+			</result>
+		</action>
+		<action name="secondStore" class="cacheEquipmentAction" method="findEquipmentSecond" >
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		<action name="firstStore" class="cacheEquipmentAction" method="findEquipmentFirst" >
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		<!-- 查询系统是否可用 -->
+		<action name="atsNormal" class="cacheEquipmentAction" method="systemUsed" >
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+	</package>
+	<package name="event" namespace="/event"  extends="json-default">
+		<action name="openHistory" class="dataAction" method="openHistory">
+			<result name="success">/pages/public/historyData.html</result>
+		</action> 
+		<action name="history" class="dataAction" method="history">
+			<result name="success" type="json">
+				<param name="root">result</param>	
+			</result>
+		</action>
+		<!-- ats system setting 2014.4.20 -->
+		<action name="loadSetting" class="cacheEventAction" method="loadSetting">
+		</action>
+			<action name="atssetting" class="cacheEventAction" method="atssetting">
+		</action>
+		
+	</package>
+</struts>    

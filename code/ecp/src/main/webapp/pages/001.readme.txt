@@ -1,0 +1,6 @@
+加载JS
+/* if(fileReadStatus==0)
+		{Ext.Loader.load(['pages/1002-01-readFile.js'],function(){
+			fileReadStatus=1;
+		});}*/ 
+		

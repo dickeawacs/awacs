@@ -1,0 +1,477 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ecp.ecp</groupId>
+	<artifactId>ecp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+<properties>
+		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
+		<org.springframework.security.version>3.0.5.RELEASE</org.springframework.security.version>	
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+		<org.apache.struts2.version>2.1.8</org.apache.struts2.version>
+</properties>
+  <dependencies>
+  
+  <!-- struts2核心包 -->
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-core</artifactId>
+      <version>2.3.16</version>
+    </dependency>
+    <!-- spring和struts2整合所用到的包 -->
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-spring-plugin</artifactId>
+      <version>2.3.16</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-web</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!-- 在 Struts2中要使用 Ajax获得Json数据。要使用Ajax必须引用此Jar -->
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-json-plugin</artifactId>
+      <version>2.3.16</version>
+    </dependency>
+    
+    <!-- Hibernate包 -->
+    <!-- Hibernate核心包 -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>3.5.6-Final</version>
+    </dependency>
+    <!-- 代码生成库 能够在程序运行的时候动态生成接口的实现类和继承于某个类的子类， 它是依赖于ASM的，而ASM可以灵活的操作字节码。 -->
+    <!-- log4j日志引用包,包含slf4j-api和log4j -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.5.8</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- Spring包 -->
+    <!-- 为Spring核心提供了大量扩展。可以找到使用Spring ApplicationContext特性时所需的全部类，JDNI所需的全部类，UI方面的用来与模板（Templating）引擎如 Velocity、FreeMarker、JasperReports集成的类，以及校验Validation方面的相关类。 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    <!-- 这个jar文件包含Spring对 DAO特性集进行了扩展，使其支持 iBATIS、JDO、OJB、TopLink，因为Hibernate已经独立成包了，现在不包含在这个包里了。这个jar文件里大部分的类都要依赖 spring-dao.jar里的类，用这个包时你需要同时包含spring-dao.jar包。 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    <!-- 这个jar文件包含Web应用开发时，用到Spring框架时所需的核心类，包括自动载入WebApplicationContext特性的类、 Struts与JSF集成类、文件上传的支持类、Filter类和大量工具辅助类。 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.7.4</version>
+    </dependency>
+
+    <!-- 包含Spring MVC框架相关的所有类。 包含国际化、标签、Theme、视图展现的FreeMarker、 JasperReports、Tiles、Velocity、 XSLT相关类 -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    
+    <!-- 工具类 -->
+    <!-- 个最常用的工具，作为 jdk的补充。FastDateFormat.getInstance就要引用此包 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.1</version>
+    </dependency>
+    <!-- jstl标签 -->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <!-- java中Json解析 -->
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.13</version>
+    </dependency>
+    <!-- log4j日志 -->
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.16</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- servlet接口 -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.4</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- jsp接口 -->
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>2.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- junit测试jar包 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.sf.json-lib</groupId>
+      <artifactId>json-lib</artifactId>
+      <version>2.4</version>
+      <type>jar</type>
+      <classifier>jdk15</classifier>
+      <scope>compile</scope>
+    </dependency>
+     
+    <dependency>
+    	<groupId>commons-beanutils</groupId>
+    	<artifactId>commons-beanutils</artifactId>
+    	<version>1.8.3</version>
+    </dependency>
+    <dependency>
+    	<groupId>commons-collections</groupId>
+    	<artifactId>commons-collections</artifactId>
+    	<version>3.2.1</version>
+    </dependency>
+    <dependency>
+    	<groupId>commons-io</groupId>
+    	<artifactId>commons-io</artifactId>
+    	<version>2.4</version>
+    </dependency>
+   
+    <dependency>
+    	<groupId>commons-digester</groupId>
+    	<artifactId>commons-digester</artifactId>
+    	<version>1.8</version>
+    </dependency>
+     
+    <dependency>
+    	<groupId>commons-logging</groupId>
+    	<artifactId>commons-logging</artifactId>
+    	<version>1.1.3</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-aop</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-aspects</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-beans</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+      <dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-oxm</artifactId>
+	<version>${org.springframework.version}</version>
+	</dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-context</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-core</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-expression</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-jdbc</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-orm</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-test</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>    
+    
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-web</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-tx</artifactId>
+    	<version>${org.springframework.version}</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>5.0.8</version>
+    </dependency>
+    
+    
+    <dependency>
+    	<groupId>org.aspectj</groupId>
+    	<artifactId>aspectjweaver</artifactId>
+    	<version>1.7.4</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>aopalliance</groupId>
+    	<artifactId>aopalliance</artifactId>
+    	<version>1.0</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.javassist</groupId>
+    	<artifactId>javassist</artifactId>
+    	<version>3.18.1-GA</version>
+    </dependency>
+    
+    <dependency>
+	<groupId>cglib</groupId>
+	<artifactId>cglib</artifactId>
+	<version>2.2.2</version>
+	</dependency>
+	
+<dependency>
+	<groupId>commons-dbcp</groupId>
+	<artifactId>commons-dbcp</artifactId>
+	<version>1.4</version>
+</dependency>
+
+<dependency>
+	<groupId>javax.transaction</groupId>
+	<artifactId>transaction-api</artifactId>
+	<version>1.1</version>
+</dependency>
+ 
+<dependency>
+	<groupId>org.apache.httpcomponents</groupId>
+	<artifactId>httpclient</artifactId>
+	<version>4.3.6</version>
+</dependency>
+
+<dependency>
+	<groupId>commons-codec</groupId>
+	<artifactId>commons-codec</artifactId>
+	<version>1.6</version>
+</dependency>
+
+<dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId>
+	<version>1.2.17</version>
+</dependency>
+ 
+    <dependency>
+    	<groupId>org.codehaus.jackson</groupId>
+    	<artifactId>jackson-core-lgpl</artifactId>
+    	<version>1.9.13</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.codehaus.jackson</groupId>
+    	<artifactId>jackson-mapper-lgpl</artifactId>
+    	<version>1.9.13</version>
+    </dependency>
+    <dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.1.0</version>
+		<scope>provided</scope>
+	</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>${org.apache.struts2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.8</version>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>asm</groupId>
+			<artifactId>asm-util</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-asm</artifactId>
+			<version>3.1.1.RELEASE</version>
+		</dependency>
+  </dependencies>
+  <!--  配置不同的环境目录  -->
+	  <profiles>
+            <profile>
+                <id>dev</id>
+                <properties>  
+                    <env>dev</env>  
+                </properties>  
+                <activation>  
+                    <activeByDefault>true</activeByDefault>  
+                </activation>
+            </profile>
+            <profile>
+                <id>sit</id>
+                <properties>  
+                    <env>sit</env>  
+                </properties>  
+            </profile>
+            <profile>
+                <id>uat</id>
+                <properties>  
+                    <env>uat</env>  
+                </properties>  
+            </profile>
+            <profile>
+                <id>product</id>
+                <properties>  
+                    <env>pro</env>  
+                </properties>  
+            </profile>
+	</profiles>
+  <build>
+    <finalName>ecp</finalName>
+    <resources>
+    	<resource>
+    		<directory>src/main/resources/</directory>
+    		<filtering>false</filtering>
+    	</resource>
+    	<resource>
+    		<directory>src/main/java/</directory>
+    		<excludes><exclude>**/*.java</exclude></excludes>
+    		<filtering>false</filtering>
+    	</resource>
+    	<resource>
+    		<directory>src/main/resources/config/${env}/</directory>
+    		<filtering>true</filtering>
+    	</resource>
+    </resources>
+	<plugins>
+		
+		<plugin>
+             <groupId>org.apache.maven.plugins</groupId>
+             <artifactId>maven-compiler-plugin</artifactId>
+             <version>3.1</version>
+             <configuration>
+                     <source>1.8</source>
+                     <target>1.8</target>
+                     <compilerArguments>
+                             <endorseddirs>${endorsed.dir}</endorseddirs>
+                     </compilerArguments>
+             </configuration>
+         </plugin>
+         
+         <!-- <plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.3.v20120416</version>
+				<dependencies>
+				<dependency>
+			        <groupId>org.mortbay.jetty</groupId>
+			        <artifactId>jsp-2.1</artifactId>
+			        <version>6.0.0</version>
+			      </dependency>
+				</dependencies>
+				<configuration>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>9999</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<stopPort>9966</stopPort>
+					<stopKey>foo</stopKey>
+					<jettyEnvXml>src/main/webapp/WEB-INF/jetty-env.xml</jettyEnvXml>
+				</configuration>
+				<executions>
+					<execution>
+						<id>start-jetty</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<scanIntervalSeconds>0</scanIntervalSeconds>
+							<daemon>true</daemon>
+						</configuration>
+					</execution>
+					<execution>
+						<id>stop-jetty</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+	</plugins>
+  </build>
+  <packaging>war</packaging>
+  <name>Equipment control platform</name>
+  <description>Equipment control platform</description>
+</project>

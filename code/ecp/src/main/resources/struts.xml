@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- include other struts config -->
+<include file="router.xml"></include>
+<!-- auto reload this struts update -->
+<constant name="struts.configuration.xml.reload" value="true"></constant>
+<!-- constant set:use spring build case -->
+<constant name="struts.objectFactory" value="spring"></constant>
+<!--该属性指定上传文件的临时保存路径,该属性的默认值是javax.servlet.context.tempdir. *-->
+<constant name="struts.multipart.saveDir" value="/templates" />
+<!--该属性指定Struts 2文件上传中整个请求内容允许的最大字节数. 这里是50M -->
+<constant name="struts.multipart.maxSize" value="50000000" />
+</struts>    
