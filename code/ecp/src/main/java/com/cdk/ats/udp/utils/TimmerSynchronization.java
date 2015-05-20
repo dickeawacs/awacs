@@ -1,4 +1,4 @@
-package com.cdk.ats.udp;
+package com.cdk.ats.udp.utils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,7 +8,6 @@ import com.cdk.ats.udp.cache.AtsEquipmentCache;
 import com.cdk.ats.udp.operating.Operating_0x30;
 import com.cdk.ats.udp.process.ActionReady;
 import com.cdk.ats.udp.transmitter.TransmitterContext;
-import com.cdk.ats.udp.utils.Constant;
 import com.cdk.ats.web.pojo.hbm.Table10;
 
 public class TimmerSynchronization {

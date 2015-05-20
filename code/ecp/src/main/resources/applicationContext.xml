@@ -38,5 +38,16 @@
 	<context:component-scan base-package="com.hummingbird.fnbilling.service"/>
 	
 	 -->
+	 
+	 <!-- plugs  -->
+	 <bean id="receiveStrategyContext" class="com.cdk.ats.plugs.context.ReceiveStrategyContext" >
+	 <property name="plugs" >
+	 <map key-type="String" value-type="String" >
+	 	<entry key="0x21-0x12" value="temperatureCmdBiz" />
+	 	<entry key="0x21-0x22" value="" />
+	 	<entry key="0x21-0x32" value="" />
+	 </map>
+	 </property>
+	 </bean>
  
 </beans> 	

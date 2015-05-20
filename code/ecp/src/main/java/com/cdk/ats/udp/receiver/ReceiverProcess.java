@@ -27,6 +27,7 @@ public class ReceiverProcess implements Runnable {
 			//LogContent.r(dp);
 			TypeProcess typep = new TypeProcess();
 			typep.process(dp);
+			typep=null;
 		}else{
 		//	LogContent.r_e(dp);
 		}

@@ -8,12 +8,15 @@ import javax.servlet.ServletContextListener;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import common.cdk.config.fileload.Log4jFileLoad;
 import common.cdk.config.fileload.MsgFileLoad;
 import common.cdk.config.fileload.SqlFileLoad;
 import common.cdk.config.fileload.WebAppFileLoad;
 import common.cdk.login.connections.ConnectionControl;
+import common.ecp.utils.SpringBeanUtil;
 import common.filethread.file.FilePojo;
 import common.filethread.thread.FileThread;
 
@@ -36,7 +39,9 @@ public class AppStartupListener implements ServletContextListener{
 
 	
 	public void contextInitialized(ServletContextEvent arg0) {
-
+		regSpringContext(arg0);
+		createStrutsTempDir(arg0);
+		
 		//Object  l4j=this.getServletContext().getInitParameter((log4j);
 		String  log4jPath=arg0.getServletContext().getInitParameter(log4j);
 		String  msgpath=arg0.getServletContext().getInitParameter(msgconfigpath);
@@ -93,7 +98,7 @@ public class AppStartupListener implements ServletContextListener{
 				ConnectionControl.setConnectionNumber(NumberUtils.createInteger(maxTime));
 			}
 
-			createStrutsTempDir(arg0);
+		
 	
 		
 	}
@@ -116,7 +121,18 @@ public class AppStartupListener implements ServletContextListener{
 		}
 		
 	}
-	 
+	/***
+	 * 
+	* 
+	* @Description: 装配Spring上下文至SpringBeanUtil类。
+	* @author 陈定凯 
+	* @date 2015年5月13日 下午5:34:56  
+	* @param arg0
+	 */
+		private void regSpringContext(ServletContextEvent arg0){
+			ApplicationContext ac = WebApplicationContextUtils.getRequiredWebApplicationContext(arg0.getServletContext());
+			SpringBeanUtil.init(ac);
+		}
 	 
 	
 

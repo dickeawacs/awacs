@@ -12,7 +12,6 @@ import com.cdk.ats.udp.process.ActionParams;
 import com.cdk.ats.udp.receiver.ReceiverContext;
 import com.cdk.ats.udp.reset.ResetContext;
 import com.cdk.ats.udp.transmitter.TransmitterContext;
-import com.cdk.ats.udp.utils.AtsMD5util;
 import com.cdk.ats.udp.utils.CommandTools;
 import com.cdk.ats.udp.utils.Constant;
 import com.cdk.ats.udp.webplug.dao.DaoFactory;
