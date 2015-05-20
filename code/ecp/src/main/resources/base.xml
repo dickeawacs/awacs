@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	<!--  action bean  -->
+	<!--
+
+		这里的scope就是用来配置spring
+		bean的作用域，它标识bean的作用域。在spring2.0之前bean只有2种作用域即：
+		singleton(单例)、non-singleton（也称prototype）.
+		Spring2.0以后，增加了session、request、global session 三种
+		专用于Web应用程序上下文的Bean。因此，默认情况下Spring2.0现在有五种类型的Bean。
+	-->
+	<bean id="loginAction" scope="prototype" class="com.cdk.ats.web.action.login.UserLoginAction">
+		<property name="loginDao" ref="loginDao"></property>
+	</bean>
+
+	<bean id="dataAction" scope="prototype" class="com.cdk.ats.web.action.query.DataAction">
+		<property name="recordDao" ref="EventRecordDAO"></property>
+		<property name="table10DAO" ref="Table10DAO"></property>
+	</bean>
+	<bean id="table1QueryAction" scope="prototype" class="com.cdk.ats.web.action.query.Table1QueryAction">
+		<property name="baseDao" ref="BaseDao"></property> 
+	</bean>
+	<bean id="adminAction" scope="prototype" class="com.cdk.ats.web.action.pages.AdminAction">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="adminPortAction" scope="prototype" class="com.cdk.ats.web.action.pages.AdminProtAction">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	
+	<bean id="userAction" scope="prototype" class="com.cdk.ats.web.action.pages.UserAction"></bean>
+	<bean id="publicAction" scope="prototype" class="com.cdk.ats.web.action.pages.PublicAction">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="resultAction" scope="prototype" class="com.cdk.ats.web.action.result.ResultAction"></bean>
+	<bean id="DeviceQueryAction" scope="prototype" class="com.cdk.ats.web.action.query.DeviceLayer">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="toolAction" scope="prototype" class="com.cdk.ats.web.action.test.TestTool">
+	</bean>
+	<bean id="systemManagementAction" scope="prototype" class="com.cdk.ats.web.action.contorl.SystemManagement">
+	<property name="sysdao" ref="sysDao"></property>
+	</bean>
+	<bean id="MapAction" scope="prototype" class="com.cdk.ats.web.action.map.MapAction">
+		<property name="biz" ref="mapActionBiz"></property>
+	</bean>
+	<bean id="mapActionBiz" class="com.cdk.ats.web.action.map.MapBiz" >
+		<property name="mapDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="cacheEquipmentAction"  scope="prototype" class="com.cdk.ats.current.EquipmentAction">
+		<property name="dao" ref="BaseDao"></property>
+	 </bean>
+	 <bean id="cacheEventAction"  scope="prototype" class="com.cdk.ats.current.EventAction">
+	 </bean>
+	
+</beans>

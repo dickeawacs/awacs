@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+	http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+    ">
+
+
+	<!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver">
+		</property>
+		
+		<property name="jdbcUrl">
+		<value>jdbc:mysql://127.0.0.1:3306/ats?useUnicode=true&amp;characterEncoding=utf-8</value>
+		</property>
+														
+		<property name="user" value="atsdb"></property>
+		<property name="password" value="atsdb"></property>
+		<property name="maxPoolSize" value="30"></property>
+		<property name="minPoolSize" value="10"></property>
+		<property name="acquireIncrement" value="2"></property>
+		<property name="maxStatements" value="300"></property>
+	</bean>
+	-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!--  pool  -->
+		<property name="initialSize" value="${pool.initialSize}" />
+		<property name="maxActive" value="${pool.maxActive}" />
+		<property name="maxIdle" value="${pool.maxIdle}" />
+		<property name="maxWait" value="${pool.maxWait}" />
+		<!-- <property name="defaultAutoCommit" value="${pool.defaultAutoCommit}" /> -->
+		<property name="testOnBorrow" value="true" />
+		  <property name="testOnReturn" value="true" />
+		  <property name="testWhileIdle" value="true" />
+		  <property name="validationQuery" value="select 1" />
+	</bean>	
+	
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">${jdbc.showsql}</prop>
+			</props>
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<!-- value>com/cdk/web/ats/entity/Table1.hbm.xml</value -->
+				<value>classpath:com/cdk/ats/web/pojo/hbm/*.hbm.xml</value>
+			</list>
+		</property>
+		
+		<property name="mappingResources">
+			<list></list>
+		</property>
+	</bean>
+	<!-- 事务管理器 -->
+	<!-- 配置事务特性，配置add，delete，update开始的方法，事务传播特性为required -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	<!--
+		配置那些类的方法进行事务管理，当前com.sy.crm.service包中的子包， 类中所有方法需要，还需要参考tx:advice的设置
+	-->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="aop1" expression="execution(* com.cdk.ats.web.dao.*.*(..))" />
+	 	<aop:pointcut id="aop2" expression="execution(* com.cdk.ats.web.action.login.UserLoginDao.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="aop1" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="aop2" />
+	</aop:config>
+	
+	<bean id="loginDao" class="com.cdk.ats.web.action.login.UserLoginDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="BaseDao" class="com.cdk.ats.web.dao.BaseDao"> 
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="Table1DAO" class="com.cdk.ats.web.dao.Table1DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Table2DAO" class="com.cdk.ats.web.dao.Table2DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Table3DAO" class="com.cdk.ats.web.dao.Table3DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Table8DAO" class="com.cdk.ats.web.dao.Table8DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Table6DAO" class="com.cdk.ats.web.dao.Table6DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Table7DAO" class="com.cdk.ats.web.dao.Table7DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Table10DAO" class="com.cdk.ats.web.dao.Table10DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="Table5DAO" class="com.cdk.ats.web.dao.Table5DAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="sysDao" class="com.cdk.ats.web.dao.SystemDao">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="MappointDAO"
+		class="com.cdk.ats.web.dao.MappointDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="MapDAO" class="com.cdk.ats.web.dao.MapDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="EventRecordDAO"
+		class="com.cdk.ats.web.dao.EventRecordDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	</beans>

@@ -1,0 +1,311 @@
+BODY {
+	BACKGROUND-COLOR: #3b6ea5;
+	HEIGHT: 100%;
+	OVERFLOW: hidden
+}
+
+.login-head {
+	width: 100%;
+	BACKGROUND: url(../images/login_head_bg.gif) repeat-x;
+	height: 76px;
+	position: absolute;
+	top: 0;
+}
+
+.home {
+	BACKGROUND: url(../images/home.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 100px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+	display: inline;
+}
+
+.home:hover {
+	BACKGROUND: url(../images/home_hover.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 100px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+}
+
+.favorites {
+	BACKGROUND: url(../images/favorites.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 60px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+}
+
+.favorites:hover {
+	BACKGROUND: url(../images/favorites_hover.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 60px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+}
+
+.download {
+	BACKGROUND: url(../images/download.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 60px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+}
+
+.download:hover {
+	BACKGROUND: url(../images/download_hover.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 60px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+}
+
+.registered {
+	BACKGROUND: url(../images/registered.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 60px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+}
+
+.registered:hover {
+	BACKGROUND: url(../images/registered_hover.gif) no-repeat;
+	width: 43px;
+	height: 61px;
+	margin-left: 60px;
+	margin-top: 10px;
+	float: left;
+	cursor: pointer;
+}
+
+.login-div {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -201px;
+	margin-left: -500px;
+	PADDING-BOTTOM: 0px;
+	BACKGROUND: url(../images/login_dlv.gif) no-repeat 0px 0px;
+	PADDING-LEFT: 0px;
+	WIDTH: 1000px;
+	height: 402px;
+	PADDING-RIGHT: 0px;
+	PADDING-TOP: 0px;
+}
+
+.login-div table {
+	border-collapse: collapse;
+	width: 260px;
+	overflow: hidden;
+	height: 120px;
+}
+
+.form_table {
+	 
+}
+
+.login_table {
+	border-collapse: collapse;
+	width: 260px;
+	overflow: hidden;
+	height: 120px;
+	margin-top: 124px;
+}
+
+.login-top {
+	WIDTH: auto;
+	DISPLAY: block;
+	FLOAT: left;
+	HEIGHT: 21px
+}
+
+.login-down {
+	WIDTH: auto;
+	DISPLAY: block;
+	HEIGHT: auto;
+}
+
+.login-bg {
+	WIDTH: auto;
+}
+
+.login {
+	TEXT-ALIGN: center;
+	font-family: "微软雅黑", "黑体";
+	font-size: 30px;
+	color: #fff;
+	font-weight: bold;
+	vertical-align: middle;
+	height: 43px;
+}
+
+.login span {
+	font-size: 25px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-title {
+	TEXT-ALIGN: left;
+	PADDING-LEFT: 25px;
+	WIDTH: 100px;
+	PADDING-TOP: 10px
+}
+
+.loigntitle {
+	LINE-HEIGHT: 180%;
+	COLOR: gray;
+	FONT-SIZE: 12px;
+	PADDING-TOP: 10px
+}
+
+.loign-line {
+	MARGIN: 0px auto;
+	PADDING-LEFT: 15px
+}
+
+.login-form-center {
+	text-align: left;
+	width: 300px;
+	overflow: hidden;
+}
+
+.logintd {
+	TEXT-ALIGN: right;
+	LINE-HEIGHT: 33px;
+	COLOR: #3e3e3e;
+	FONT-SIZE: 14px;
+}
+
+.name {
+	TEXT-ALIGN: right;
+	LINE-HEIGHT: 30px;
+	HEIGHT: 30px;
+	COLOR: #3e3e3e;
+	FONT-SIZE: 14px;
+	width: 52px;
+	BACKGROUND: url(../images/manager.gif) no-repeat center;
+}
+
+.mima {
+	TEXT-ALIGN: right;
+	LINE-HEIGHT: 30px;
+	HEIGHT: 30px;
+	COLOR: #3e3e3e;
+	FONT-SIZE: 14px;
+	width: 27px;
+	BACKGROUND: url(../images/mima.gif) no-repeat center;
+}
+
+.logintd2 {
+	TEXT-ALIGN: left;
+	height: 30px;
+}
+
+.loginMessage { 
+	clear: both;  
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	vertical-align: top;
+	padding-left: 60px;
+}
+ 
+
+.login-form {
+	WIDTH: 564px;
+	FLOAT: left;
+	OVERFLOW: hidden
+}
+
+/*---------------------------------------------------foot--------------------------------------------*/
+.foot {
+	BACKGROUND: url(../images/login_banquan.gif) no-repeat;
+	width: 1002px;
+	height: 64px;
+	position: absolute;
+	left: 50%;
+	margin-left: -501px;
+	bottom: 0;
+	text-align: center;
+	color: #fff;
+}
+
+.tip {
+	margin-top: 12px;
+	margin-bottom: 2px;
+}
+
+.banquan a:link {
+	color: #fff;
+	text-decoration: none;
+}
+
+.banquan a:hover {
+	text-decoration: underline;
+	color: #2E768C;
+}
+
+.banquan a:visited {
+	text-decoration: none;
+	color: #666;
+}
+
+.buttonBase {
+	width: 87px;
+	height: 25px;
+	color: #212324;
+	cursor: pointer;
+	font-size: 14px;
+	border:0px;
+	padding:0 0 0 0px;
+	line-height: 24px;
+	margin-left: 0px;
+}
+
+.buttonface {
+	background: url(../images/login_bt.gif) no-repeat 0px 0px;
+}
+
+.buttonface:hover {
+	background: url(../images/login_bt_over.gif) no-repeat 0px 0px;
+/*	border-bottom: 0px;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	line-height: 24px;
+	margin: 0px;
+	padding-left: 0px;
+	width: 87px;
+	padding-right: 0px;
+	height: 25px;
+	border-top: 0px;
+	cursor: pointer;
+	border-right: 0px;
+	padding-top: 0px;
+	font-size: 14px;*/
+}
+
+.infoInput {
+	border: 1px solid #85c9e1;
+	BACKGROUND: url(../images/login_input_bg.gif) repeat-x 28px;
+	HEIGHT: 19px;
+	width: 86px;
+	COLOR: #fff;
+	FONT-SIZE: 12pt;
+	padding-top: 2px;
+	padding-left: 6px;
+}
