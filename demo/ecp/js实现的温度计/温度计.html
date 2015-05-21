@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<link href="realimage.css" />
+<script>
+ var y0=0, x0=0;
+ var xx=0, yy=0;
+ var movable = false;//移动
+ var resizable = false;//拖拽
+ 
+ function controlclick(id)//单击
+ {
+ }
+function startDrag(id)//开始
+ {
+  var v =id;
+  v.setCapture();
+  if (v.style.cursor=="default")
+  {
+    movable = true;
+    resizable = false;
+    xx = event.x + x0 - v.offsetLeft;
+    yy = event.y + y0 - v.offsetTop;
+  }
+  else
+  {
+    movable = false;
+    resizable = true;
+    xx = v.style.width;
+    yy = v.style.height;
+  }
+ }
+ 
+ function endDrag(id)//结束
+ {
+ 	if (!movable && !resizable) return;
+  movable = false;
+  resizable = false;
+  var v = id;
+  v.releaseCapture();// 释放捕获的对象
+ }
+ 
+ function MouseMove(id)//鼠标划过
+ {
+  if (movable || resizable) {Drag(id);}
+  else{ChangeCursor(id);}
+ }
+ 
+ function Drag(id)//执行画的动作
+ {
+ if (!movable && !resizable) return;
+   var v =id;
+  if (movable)//拖动
+  {
+    if ((event.x+x0-xx)>=0) v.style.left=event.x+x0-xx;
+    else                    v.style.left=0;
+    if ((event.y+y0-yy)>=0) v.style.top=event.y+y0-yy;
+    else                 v.style.top=0;
+  }
+  else if(resizable)//拉伸
+  {
+  if (v.style.cursor=="w-resize") {
+      v.style.width = event.x + x0 - v.offsetLeft;
+    } else if (v.style.cursor=="n-resize") {
+      v.style.height = event.y + y0 - v.offsetTop;
+    } else if (v.style.cursor == "nw-resize") {
+      v.style.width = event.x + x0 - v.offsetLeft;
+      v.style.height = event.y + y0 - v.offsetTop;
+ }
+}
+}
+
+ function ChangeCursor(id)
+ {
+ 	if (movable || resizable) return;
+  var v = id;
+   xx =  v.offsetLeft - x0 + v.offsetWidth - 5;
+   yy =  v.offsetTop - y0 + v.offsetHeight - 5;
+  if      (event.x<xx  && event.y<yy)  { v.style.cursor = "default"; }
+  else if (event.x<xx  && event.y>=yy) { v.style.cursor = "n-resize"; }//鼠标样式
+  else if (event.x>=xx && event.y<yy)  { v.style.cursor = "w-resize"; }
+  else if (event.x>=xx && event.y>=yy) { v.style.cursor = "nw-resize"; }
+  else { v.style.cursor = "default"; }
+ }
+var height=0;//温度计高度
+var topvalue=0;//层离上边的高度
+var zhi=0;//温度值  温度计高度/100
+var currwenduzhi=0;//当前的温度值
+var changezhi=0;//要改变的温度值
+ function textchange(obj)
+ {
+ 	var textvalue=obj.value;
+ 	if(isNaN(textvalue)||textvalue.length==0)
+ 	{
+ 		alert('请填写数字');
+ 	}else
+ 	{
+ 		if(textvalue>100){alert('温度值太大');return;}
+ 		var v=document.getElementById('test');
+ 		if(height==0)
+ 		{
+ 			height=parseInt(v.style.height.replace('px',''));//得到层的高度
+ 			zhi=height/100;//把高度分成100份
+ 		}	
+ 		if(topvalue==0)
+ 		{
+ 			topvalue=parseInt(v.style.top.replace('px',''));//得到层离上边的距离
+ 		}
+ 		 currwenduzhi=parseInt(v.style.height.replace('px',''))/zhi;//得到当前的温度值
+ 		 changezhi=parseInt(textvalue);//改变的温度值
+ 		
+ 			setInterval(changes,500);
+ 	}
+ }
+ function changes()
+ {
+ 	if(currwenduzhi==changezhi)
+ 	{
+ 		clearInterval(changes);
+ 	}
+ 	if(currwenduzhi>changezhi)
+ 	{
+ 		currwenduzhi=currwenduzhi-1;
+ 	}else
+ 	{
+ 		currwenduzhi=currwenduzhi+1;
+ 	}
+ 	var v=document.getElementById('test');
+ 	var value0=zhi*currwenduzhi;
+ 	v.style.height=value0+'px';
+ 	v.style.top=topvalue+(height-value0)+'px';
+ }
+
+</script>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: white; background-image:url(1.bmp)">
+<div id="test" onmousemove="MouseMove(this)"  onmousedown="startDrag(this)" onmouseup="endDrag(this)" onclick="controlclick(this)" style="border:1px;background:red;width:100px;height:20px;position:absolute;left:0;top:0;"></div>
+<img  id="wen" src="温度计.JPG"/>
+填写温度值：<input type='text' widht='20' onclick='textchange(this)'>
+</body>
+</html>
