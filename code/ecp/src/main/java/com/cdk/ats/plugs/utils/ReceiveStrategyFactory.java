@@ -3,7 +3,11 @@ package com.cdk.ats.plugs.utils;
 import com.cdk.ats.plugs.biz.IPlugsReceiveCmdBiz;
 import com.cdk.ats.plugs.context.ReceiveStrategyContext;
 import common.ecp.utils.SpringBeanUtil;
-
+/***
+ * 
+ * @author Administrator
+ * 命令处理类工厂
+ */
 public class ReceiveStrategyFactory {
 	
 	private static ReceiveStrategyFactory strategy;

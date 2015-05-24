@@ -3,10 +3,18 @@ package com.cdk.ats.plugs.context;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
+
 import com.cdk.ats.plugs.biz.IPlugsReceiveCmdBiz;
+
 import common.ecp.utils.SpringBeanUtil;
 
-
+/***
+ * 
+ * @author Administrator
+ *  动态插件上下文件。保存了所有的命令串。
+ */
+@Component
 public class ReceiveStrategyContext {
 	
 	Map<String, String> plugs=new HashMap<String, String>();
