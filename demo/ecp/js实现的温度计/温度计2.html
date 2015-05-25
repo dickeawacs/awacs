@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>温度计</title>
+<script>
+var height=0;//温度计高度
+var topvalue=0;//层离上边的高度
+var zhi=0;//温度值  温度计高度/100
+var currwenduzhi=0;//当前的温度值
+var changezhi=0;//要改变的温度值
+ function textchange()
+ {
+
+ 	var textvalue=num.value;
+ 	if(isNaN(textvalue)||textvalue.length==0)
+ 	{
+ 		alert('请填写数字');
+ 	}else
+ 	{
+ 		if(textvalue>100){alert('温度值太大');return;}
+ 		var v=document.getElementById('test');
+ 		if(height==0)
+ 		{
+ 			height=parseInt(v.style.height.replace('px',''));//得到层的高度
+ 			zhi=height/100;//把高度分成100份
+ 		}	
+ 		if(topvalue==0)
+ 		{
+ 			topvalue=parseInt(v.style.top.replace('px',''));//得到层离上边的距离
+ 		}
+ 		 currwenduzhi=parseInt(v.style.height.replace('px',''))/zhi;//得到当前的温度值
+ 		 changezhi=parseInt(textvalue);//改变的温度值
+ 		
+ 			setInterval(changes,500);//实现渐动的效果
+ 	}
+ }
+ function changes()
+ {
+ 	if(currwenduzhi==changezhi)
+ 	{
+ 		clearInterval(changes);
+ 	}
+ 	if(currwenduzhi>changezhi)
+ 	{
+ 		currwenduzhi=currwenduzhi-1;
+ 	}else
+ 	{
+ 		currwenduzhi=currwenduzhi+1;
+ 	}
+ 	var v=document.getElementById('test');
+ 	var value0=zhi*currwenduzhi;
+ 	v.style.height=value0+'px';
+ 	v.style.top=topvalue+(height-value0)+'px';
+ }
+
+</script>
+</head>
+
+<body>
+<div id="test" style="border:1px;background:red;width:4px;height:208px;position:absolute;left:17px;top:26px"></div>
+<img  id="wen" src="温度计.JPG"/>
+填写温度值：<input name="num" type='text' widht='20' >
+<button onclick='textchange()'>改变</button>
+</body>
+</html>
