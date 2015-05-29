@@ -1,7 +1,8 @@
-package com.cdk.ats.plugs.controller;
+package com.cdk.ats.web.controller;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Service;
 /***
  * 
 * @Title: BaseController.java 
@@ -11,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 * @date 2015年5月26日 下午11:32:02 
 * @version V1.0
  */
+
 public class BaseController {
 	protected Log log=LogFactory.getLog(getClass());
 

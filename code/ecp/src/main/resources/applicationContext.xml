@@ -28,7 +28,7 @@
 -->
 	
 	<!--enable annotation support -->
-	<context:annotation-config />
+	<context:annotation-config  base-package="com.cdk.ats.plugs"   />
    <!--
     <context:component-scan  base-package="com.hummingbird" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
@@ -43,9 +43,7 @@
 	 <bean id="receiveStrategyContext" class="com.cdk.ats.plugs.context.ReceiveStrategyContext" >
 	 <property name="plugs" >
 	 <map key-type="String" value-type="String" >
-	 	<entry key="0x21-0x12" value="temperatureCmdBiz" />
-	 	<entry key="0x21-0x22" value="" />
-	 	<entry key="0x21-0x32" value="" />
+	 	<entry key="0x21-0x12" value="analogQuantityReceiver" />
 	 </map>
 	 </property>
 	 </bean>

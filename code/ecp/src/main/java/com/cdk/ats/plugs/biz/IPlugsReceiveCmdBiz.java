@@ -2,8 +2,6 @@ package com.cdk.ats.plugs.biz;
 
 import java.net.DatagramPacket;
 
-import com.cdk.ats.plugs.cmd.CmdDown;
-
 /***
  * 
  * @Title: PlugsReceiveCmdBiz.java

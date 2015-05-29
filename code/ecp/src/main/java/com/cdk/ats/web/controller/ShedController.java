@@ -1,5 +1,6 @@
-package com.cdk.ats.plugs.controller;
+package com.cdk.ats.web.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @date 2015年5月27日 上午12:17:47
  * @version V1.0
  */
-@RequestMapping("/shed")
+
+@Controller
 public class ShedController extends BaseController {
 
 	/**

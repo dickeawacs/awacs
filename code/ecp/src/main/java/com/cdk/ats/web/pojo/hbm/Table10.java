@@ -74,6 +74,16 @@ public class Table10 implements java.io.Serializable {
 	/*** 用户防区布撤防状态 ***/	
 	private  String  field16;
 	
+	/***
+	 * 模拟量最大值
+	 */
+	private String aqMax;
+	private String aqMin;
+	private String aqValue;
+	/***
+	 * 趋势：UP 或是 DOWN
+	 */
+	private String trend;
 	
 //----------------------------------------端口属性    ---------------------
 	/****
@@ -2338,6 +2348,54 @@ public class Table10 implements java.io.Serializable {
 		}
 		}
 	// Property accessors
+	/**
+	 * @return the aqMax
+	 */
+	public String getAqMax() {
+		return aqMax;
+	}
+	/**
+	 * @param aqMax the aqMax to set
+	 */
+	public void setAqMax(String aqMax) {
+		this.aqMax = aqMax;
+	}
+	/**
+	 * @return the aqMin
+	 */
+	public String getAqMin() {
+		return aqMin;
+	}
+	/**
+	 * @param aqMin the aqMin to set
+	 */
+	public void setAqMin(String aqMin) {
+		this.aqMin = aqMin;
+	}
+	/**
+	 * @return the aqValue
+	 */
+	public String getAqValue() {
+		return aqValue;
+	}
+	/**
+	 * @param aqValue the aqValue to set
+	 */
+	public void setAqValue(String aqValue) {
+		this.aqValue = aqValue;
+	}
+	/**
+	 * @return the trend
+	 */
+	public String getTrend() {
+		return trend;
+	}
+	/**
+	 * @param trend the trend to set
+	 */
+	public void setTrend(String trend) {
+		this.trend = trend;
+	}
  
 
 }

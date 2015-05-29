@@ -13,49 +13,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/classes/dao.xml,/WEB-INF/classes/applicationContext.xml,/WEB-INF/classes/base.xml</param-value>
 	</context-param>
-	 <!--springmvc -->
-	<servlet>
-		<servlet-name>spring</servlet-name>
-		<!--springmvc总控制器  -->
-			<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		    <init-param>
-		        <param-name>contextConfigLocation</param-name>
-		        <param-value>classpath:spring-servlet.xml</param-value>
-		    </init-param>
-			<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-			<servlet-name>spring</servlet-name>
-			<url-pattern>/</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.js</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.js1</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.css</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.png</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.jpg</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.gif</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>default</servlet-name>
-		<url-pattern>*.swf</url-pattern>
-	</servlet-mapping>
    	<context-param>
         <param-name>log4jConfigLocation</param-name>
         <param-value>classpath:log4j.properties</param-value>
@@ -112,50 +69,6 @@
 		<param-name>listen_port</param-name>
 		<param-value>6868</param-value>
 	</context-param>
-	<!-- context-param>
-		<description>本地侦听地址</description>
-		<param-name>listen_address</param-name>
-		<param-value>192.168.1.100</param-value>
-	</context-param-->
-	
-	
-	<!--context-param>
-		<description>目标端口</description>
-		<param-name>target_address</param-name>
-		<param-value>10000</param-value>
-	</context-param-->
-	
-	
-  <!--servlet>
-  	<description>系统启动初始化</description>
-    <servlet-name>StartInit</servlet-name>
-    <servlet-class>com.cdk.ats.web.sys.AppStartup</servlet-class>
-    <init-param>
-    	<param-name>msgConfigPath</param-name>
-    	<param-value>WEB-INF/classes/msgconfig.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>sqlConfigPath</param-name>
-    	<param-value>WEB-INF/classes/sqlconfig.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>webAppConfigPath</param-name>
-    	<param-value>WEB-INF/classes/webApp.properties</param-value>
-    </init-param>
-    <init-param>
-    	<param-name>log4jPath</param-name>
-    	<param-value>WEB-INF/classes/log4j.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>lecensePath</param-name>
-    	<param-value>WEB-INF/classes/log4j.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>SessionMaxInactiveInterval</param-name>
-    	<param-value>1200</param-value>
-    </init-param>
-    <load-on-startup>51</load-on-startup>
-  </servlet-->
   <filter>
   		<description>系统过滤器</description>
 		<filter-name>appFilter</filter-name>
@@ -190,7 +103,7 @@
 		</init-param>
 		<init-param>
 			<param-name>PassURL</param-name>
-			<param-value>login!login,login.jsp,restricted.html,pub/,ext-3.4,ctl,templates/,pages</param-value>
+			<param-value>login!login,login.jsp,restricted.html,pub/,ext-3.4,ctl,templates/,pages,plugs</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
