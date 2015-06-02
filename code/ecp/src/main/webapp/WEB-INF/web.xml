@@ -4,15 +4,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+		<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>web.root</param-value>
+	</context-param>
 	<context-param>
 		<description>配置spring配置文件的路径</description>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/classes/dao.xml,/WEB-INF/classes/applicationContext.xml,/WEB-INF/classes/base.xml</param-value>
 	</context-param>
-	<listener>
-		<display-name>spring的侦听器</display-name>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+   	<context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+    </context-param>
+    
 	<listener>
 		<display-name>登录权限</display-name>
 		<listener-class>common.cdk.login.connections.ConnectionControl</listener-class>
@@ -52,14 +57,8 @@
     <listener>
     	<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>  
     </listener> 
-    <context-param>  
-    	<param-name>webAppRootKey</param-name>  
-        <param-value>ats.root</param-value>  
-    </context-param>  
-    <context-param>  
-        <param-name>log4jConfigLocation</param-name>  
-		<param-value>/WEB-INF/classes/log4j.properties</param-value>  
-    </context-param>  
+   
+    
 	<!-- end log  -->
 	<!--  开启端口侦听  -->
 	<listener>
@@ -70,50 +69,6 @@
 		<param-name>listen_port</param-name>
 		<param-value>6868</param-value>
 	</context-param>
-	<!-- context-param>
-		<description>本地侦听地址</description>
-		<param-name>listen_address</param-name>
-		<param-value>192.168.1.100</param-value>
-	</context-param-->
-	
-	
-	<!--context-param>
-		<description>目标端口</description>
-		<param-name>target_address</param-name>
-		<param-value>10000</param-value>
-	</context-param-->
-	
-	
-  <!--servlet>
-  	<description>系统启动初始化</description>
-    <servlet-name>StartInit</servlet-name>
-    <servlet-class>com.cdk.ats.web.sys.AppStartup</servlet-class>
-    <init-param>
-    	<param-name>msgConfigPath</param-name>
-    	<param-value>WEB-INF/classes/msgconfig.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>sqlConfigPath</param-name>
-    	<param-value>WEB-INF/classes/sqlconfig.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>webAppConfigPath</param-name>
-    	<param-value>WEB-INF/classes/webApp.properties</param-value>
-    </init-param>
-    <init-param>
-    	<param-name>log4jPath</param-name>
-    	<param-value>WEB-INF/classes/log4j.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>lecensePath</param-name>
-    	<param-value>WEB-INF/classes/log4j.properties</param-value>
-    </init-param>
-     <init-param>
-    	<param-name>SessionMaxInactiveInterval</param-name>
-    	<param-value>1200</param-value>
-    </init-param>
-    <load-on-startup>51</load-on-startup>
-  </servlet-->
   <filter>
   		<description>系统过滤器</description>
 		<filter-name>appFilter</filter-name>
@@ -148,7 +103,7 @@
 		</init-param>
 		<init-param>
 			<param-name>PassURL</param-name>
-			<param-value>login!login,login.jsp,restricted.html,pub/,ext-3.4,ctl,templates/,pages</param-value>
+			<param-value>login!login,login.jsp,restricted.html,pub/,ext-3.4,ctl,templates/,pages,plugs</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
