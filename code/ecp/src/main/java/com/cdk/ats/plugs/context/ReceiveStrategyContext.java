@@ -13,8 +13,7 @@ import common.ecp.utils.SpringBeanUtil;
  * 
  * @author Administrator
  *  动态插件上下文件。保存了所有的命令串。
- */
-@Component
+ */ 
 public class ReceiveStrategyContext {
 	
 	Map<String, String> plugs=new HashMap<String, String>();
